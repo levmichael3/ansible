@@ -1,0 +1,11 @@
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  pre_tasks:
+    - include_vars: ec2_vars/{{type}}.yml
+  user: ubuntu
+  sudo: yes
+
+  tasks:
+    - name: Hello server
+      shell: uname -a
