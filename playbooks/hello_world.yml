@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: "tag_Name_{{type}}"
   connection: local
   gather_facts: False
   pre_tasks:

@@ -1,0 +1,15 @@
+- hosts: "tag_Name_{{type}}"
+  connection: local
+  gather_facts: False
+  pre_tasks:
+    - include_vars: ec2_vars/{{type}}.yml
+  user: ubuntu
+  sudo: yes
+
+  tasks:
+    - name: Gather facts
+      action: ec2_facts
+
+    - name: Conditional
+      action: debug msg="This instance is a t1.micro"
+      when: ansible_ec2_instance_type == "t1.micro"
